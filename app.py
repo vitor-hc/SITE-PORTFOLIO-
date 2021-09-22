@@ -1,8 +1,9 @@
 
 from flask import Flask,render_template,redirect, request,flash
 from flask_mail import Mail,Message
-from config import email,senha
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
 app=Flask(__name__)
 app.secret_key= 'yakumareis'
 
@@ -11,8 +12,8 @@ mail_settings={
     "MAIL_PORT":465,
     "MAIL_USSE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME":email,
-    "MAIL_PASSWORD":senha
+    "MAIL_USERNAME":os.getenv("EMAIL"),
+    "MAIL_PASSWORD": os.getenv("SENHA")
 
 }
 
